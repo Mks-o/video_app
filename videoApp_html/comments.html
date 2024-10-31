@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Comments</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            loadcomments();
+        }
+        function loadcomments() {
+
+            const newData = [];
+            try {
+                let token = localStorage.getItem("token");
+                
+                const url = "http://localhost:8080/comments/getall";
+                const response = fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": token,
+                        "Cache-Control": "no-cache",
+                        "Content-Type": "application/json; charset=UTF-8",
+                        "Accept": "*/*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Connection": "keep-alive",
+                    }
+                }).then((response) => response.json())
+                    .then((json) => {
+                        console.log(json)
+                        const data = json.map(json => ({
+                            id: json['id'],
+                            content: json["content"],
+                            ownerId: json["ownerId"],
+                            videoId: json["videoId"]
+                        }));
+                        
+                        let comments = document.getElementById("comment");
+                        let tbodytable = document.getElementById("tbodycomtable");
+                        for (let i = 0; i < data.length; i++) {
+                            tbodytable.innerHTML +=
+                                '<tr>' +
+                                '<td>' + data[i].content + '</td>' + '</tr>';
+
+                        }
+                        comments.append(tbodytable);
+
+                    });
+            }
+            catch (err) {
+            }
+
+        }
+    </script>
+    <table id="comment">
+        <thead>
+            <tr>
+                <th>
+                    <label>Comments</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbodycomtable">
+    
+        </tbody>
+    </table>
+</body>
+
+</html>

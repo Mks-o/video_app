@@ -1,0 +1,48 @@
+<configuration>
+	<!-- Define the log directory-->
+	<springProperty scope="context" name="LOG_DIR" source="log.directory" defaultvalue="../../log2"/>
+	
+	<!-- Console appender for Info level logs -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- Rolling file appender for Debug and Error level logs -->
+	<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>NEUTRAL</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- Daily rollover -->
+			<fileNamePattern>${LOG_DIR}/errors-and-debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- Keep 30 days logs-->
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>\n%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- Root level configuration -->
+	<root level="debug">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="FILE-ROLLING"/>
+	</root>
+</configuration>

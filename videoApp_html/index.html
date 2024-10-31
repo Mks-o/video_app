@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="scripts/index.js"></script>
+    <form id="regform" method="post">
+        <ol id="formDiv">
+            <li>login<input value="Admin" required name="username" id="username" type="text" title="login"></li>
+            <li>password<input value="Admin" required name="password" id="password" type="password" title="password">
+            </li>
+            <input class="ok" onclick="loadIndex()" type="submit" value="login">
+            <input class="reset" type="reset" value="clear">
+            <input class="reg" type="button" value="registration"
+                onclick="onclick=window.open('/registration.html','','toolbar=no, width=500, height=500, left=10,top=50')">
+        </ol>
+    </form>
+    <label id="result">Result</label>
+</body>
+
+</html>

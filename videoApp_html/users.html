@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Users</title>
+</head>
+
+<body>
+    <script src="scripts/users.js"></script>
+    <script>
+        window.onload = function () {
+            loadcomments();
+        }
+    </script>
+
+    <table id="users">
+        <thead>
+            <tr>
+                <th style="width: 35vw;">
+                    <label>Login</label>
+                </th>
+                <th style="width: 35vw;">
+                    <label>Mail</label>
+                </th>
+                <th style="width: 15vw;">
+                    <label>Birthday</label>
+                </th>
+                <th style="width: 10vw;">
+                    <label>Videos posted</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tbodytable">
+
+        </tbody>
+    </table>
+</body>
+
+</html>

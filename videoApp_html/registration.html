@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="scripts/registration.js"></script>
+    <form id="regform2" method="post">
+        <ol id="formDiv">
+            <li>login<input placeholder="Enter your login" required name="login" id="login" type="text" title="login"></li>
+            <li>password<input placeholder="Enter password here" required name="password" id="password" type="password" title="password">
+            <li>name<input placeholder="Enter your name" required name="name" id="name" type="text" title="username"></li>
+            <li>mail<input placeholder="Enter your e-mail" required name="mail" id="mail" type="mail" title="mail"></li>
+            <li>birthday<input placeholder="1990-12-01" pattern="\d{4}-\d{2}-\d{2}" required name="birthdate" id="birthdate" type="text" title="birthdate"></li>
+            </li>
+            <input class="ok" type="submit" value="reaistration">
+            <input class="reset" type="reset" value="clear">
+        </ol>
+    </form>
+    <label id="result">Result</label>
+
+</body>
+
+</html>

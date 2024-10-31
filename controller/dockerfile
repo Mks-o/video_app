@@ -1,0 +1,3 @@
+FROM eclipse-temurin:17-jre-alpine
+COPY /target/RandomVideoApplication-0.0.1-SNAPSHOT.jar video_app_controller.jar
+CMD [ "java", "-jar", "video_app_controller.jar"]

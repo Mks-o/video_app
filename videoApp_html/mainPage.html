@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>MainPage</title>
+</head>
+
+<body>
+    <script src="scripts/mainscript.js">
+
+    </script>
+    <script>
+        window.onload = function () {
+
+            loadtop();
+            loadnewvideos();
+            let userDto = JSON.parse(localStorage.getItem("userDto"));
+            document.getElementById("userRate").innerText = userDto.raiting==null?0:userDto.raiting;
+        }
+       </script>
+
+    <div class="header">
+        <input class="hb" type="button" onclick="window.open('/users.html','','width=500, height=500, left=10,top=50')"
+            value="All users">
+        <input class="hb" type="button" onclick="window.open('/videos.html','','width=500, height=500, left=10,top=50')"
+            value="All videos">
+        <input class="hb" type="button"
+            onclick="window.open('/comments.html','','width=500, height=500, left=10,top=50')" value="All comments">
+    </div>
+    <div class="top_menu">
+        <iframe class="frame" style="overflow: hidden;width: 20vw;padding: 0;margin: 0" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="frame" style="overflow: hidden;width: 20vw;padding: 0;margin: 0" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="frame" style="overflow: hidden;width: 20vw;padding: 0;margin: 0" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="frame" style="overflow: hidden;width: 20vw;padding: 0;margin: 0" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="frame" style="overflow: hidden;width: 20vw;padding: 0;margin: 0" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </div>
+
+    <div class="display">
+        <div aria-expanded="true" style="padding: 0;margin: 0">
+            <iframe class="mainframe" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <label class="ratelabel">Raiting: 20</label>
+            <input class="rate" onclick=rateHandler(0) type="button" style="width: 50vw" value="Rate">
+            <input class="comment" type="button" onclick=addComment(0) style="width: 50vw" value="Add comment">
+            <ul class="videocomments" title="Comments">
+
+            </ul>
+        </div>
+
+        <div aria-expanded="true" style="padding: 0;margin: 0">
+            <iframe class="mainframe" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <label class="ratelabel">Raiting: 20</label>
+            <input class="rate" onclick=rateHandler(1) type="button" style="width: 50vw" value="Rate">
+            <input class="comment" type="button" onclick=addComment(1) style="width: 50vw" value="Add comment">
+            <ul class="videocomments" title="Comments">
+
+            </ul>
+        </div>
+    </div>
+    <div class="buttons">
+        <p>User raiting:<label id="userRate">20</label></p>
+        <button type="button" onclick="window.open('/addvideo.html','','innerWidth=500, innerHeight=500, left=10,top=50')">Add
+            video</button>
+        <button type="button" onclick="window.open('/myvideos.html','','innerWidth=500, innerHeight=500, left=10,top=50')">My
+            videos</button>
+        <button type="button" onclick="deleteAccount()">Delete account</button>
+        <button type="button" onclick="window.open('/index.html','_parent','')">Log out</button>
+        <button type="button">Contact us</button>
+    </div>
+</body>
+
+</html>

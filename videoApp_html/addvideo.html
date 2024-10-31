@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/normalize.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Add new video</title>
+</head>
+
+<body>
+    <form id="addvideo" method="post">
+        <ol id="formDiv">
+            <li>Title<input required name="title" id="title" type="text" title="title"></li>
+            <li>Description<input value="description" required name="description" id="description" type="text"
+                    title="description"></li>
+            <li>URL<input required name="url" id="url" type="text" title="url"></li>
+            </li>
+            <input type="button" onclick="add()" value="add video">
+            <input type="reset" value="clear">
+        </ol>
+    </form>
+    <label id="res">Result</label>
+    <script>
+        const urlLogin = "http://localhost:8080/video/add";
+         function add(){
+            prompt("qwdqwsqswsq qdqwdqwdqwsqwws");
+            title = document.getElementById("title").value;
+            description = document.getElementById("description").value;
+            url = document.getElementById("url").value;
+            let bodyX = JSON.stringify({
+                "id": null,
+                "title": title,
+                "description": description,
+                "url": url,
+                "raiting": 0,
+                "ownerId": localStorage.getItem("currentUser"),
+                "comments": null
+            });
+            prompt(bodyX);
+            try {
+
+                const response = fetch(urlLogin, {
+                    method: 'POST',
+                    body: bodyX,
+                    headers: {
+                        "Cache-Control": "no-cache",
+                        "Content-Type": "application/json; charset=UTF-8",
+                        "Accept": "*/*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Connection": "keep-alive",
+                    }
+                }).then((response) => response.json())
+                    .then((json) => {
+                        document.getElementById("res").innerText = "Result: \n" + json["title"]+"was added";
+                        console.log(json)
+                    });
+            }
+            catch (err) {
+                document.getElementById("res").innerText = "error" + err.message;
+            }
+        };
+    </script>
+</body>
+
+</html>
